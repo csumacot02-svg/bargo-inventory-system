@@ -1,0 +1,387 @@
+﻿ 
+Design and Development of a Web-Based Inventory Management System for the Business Affairs and Resource Generating Office of SLSU-Hinunangan Campus 
+ 
+ 
+ 
+ 
+ 
+A Capstone Project 
+Presented to the 
+Faculty of Computer Studies and Information Technology Southern Leyte State University 
+In Partial Fulfillment of the Requirements for the Degree of 
+Bachelor of Science in Information Technology 
+Sumacot, Christian Gambito 
+Matubay, Almira Ruiz, Arnie 
+Lariosa, Merilyn 
+Dadap, Rydelc 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+May 2026
+ABSTRACT 
+This study focuses on the design and development of a Web-Based Inventory Management System for the Business Affairs and Resource Generating Office (BARGO) of Southern Leyte State University–Hinunangan Campus. The project addresses issues associated with manual inventory processes, including inefficient record management, difficulty in tracking stock movements, and delays in report generation. Guided by the principles of Management Information Systems (MIS) and the Technology Acceptance Model (TAM), the system was developed to improve efficiency, accuracy, and usability in inventory operations. The system utilizes a client–server architecture and was developed using Laravel, MySQL, HTML5, CSS3, JavaScript, and Bootstrap. It includes key features such as inventory recording, stock monitoring, transaction tracking, request and approval processing, report generation, and role-based access control for authorized users. The implementation of the system improved data organization, reduced manual errors, and made inventory monitoring more efficient. Additionally, the system supports real-time data processing and centralized data management, ensuring accuracy, consistency, and accessibility of inventory records. The findings indicate that the developed system provides a reliable and efficient solution for inventory management in an institutional setting and promotes user acceptance through its functional and user-friendly design. 
+  
+ 
+
+TABLE OF CONTENTS 
+ 
+TITLE PAGE ..................................................................................................................... i 
+ABSTRACT ....................................................................................................................... ii 
+TABLE OF CONTENTS ................................................................................................ iii 
+LIST OF FIGURES ......................................................................................................... iv 
+LIST OF TABLES ............................................................................................................ v 
+CHAPTER I – INTRODUCTION .................................................................................. 1 
+Project Context ............................................................................................................................ 1 
+Purpose and Description of the Project..................................................................................... 2 
+Objectives of the Project ............................................................................................................ 4 
+Scope and Limitations of the Project ........................................................................................ 4 
+CHAPTER II – REVIEW OF RELATED LITERATURE …………………………. 6 
+Related Literature / Theoretical Background ................................................................................. 6 
+Related Studies .............................................................................................................................. 8 
+CHAPTER III – TECHNICAL BACKGROUND ....................................................... 10 
+The Technicality of the Project .................................................................................................... 10 
+Details of the Technologies to be Used ........................................................................................ 12 
+Proposed Project Plan .................................................................................................................. 15 
+Architectural Design of the Proposed System .............................................................................. 17 
+Process Flow of the Proposed Project .......................................................................................... 19 
+REFERENCES ........................................................................................................................... 23  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+LIST OF FIGURES 
+ 
+Figure 1. Architectural Design of the Proposed System .............................................. 19 
+Figure 2. Process Flow of the Proposed Project ........................................................... 22 
+LIST OF TABLES 
+ 
+Table 3.1 Gantt Chart of Activities (Jan-Dec 2026)..................................................... 15 
+ 
+ 
+ 
+
+CHAPTER I – INTRODUCTION 
+ 
+Project Context 
+Inventory management is an essential function in offices responsible for handling supplies, materials, equipment, and other physical resources, as it supports proper recording, monitoring, and utilization of inventory items. In environments where inventory transactions are regularly conducted, effective management of inventory records is necessary to ensure availability of resources and support efficient operations. However, manual inventory practices and the use of basic recording tools may lead to challenges such as delays in updating records, difficulty in monitoring stock movement, and errors in preparing inventory reports (Odasco & Saong, 2023). 
+Institutional offices and resource-generating units commonly manage various inventory categories such as office supplies, agricultural products, livestock-related inventory, rice, vegetables, fruits, organic fertilizer, merchandise, and other organizational products and services. Managing these inventory categories typically involves recording stock information, monitoring item availability, tracking issuance and transaction activities, monitoring payment status and due dates, and preparing inventory reports using inventory logs, receipts, and related documents. As inventory transactions increase and inventory categories become more diverse, inventory management processes may become more difficult to organize and monitor efficiently (Atilano-Tang & Damsani, 2023; Ayochok & Perez, 2024).
+These challenges emphasize the need for a more organized and technology-supported approach to inventory management. In response to these concerns, a web-based Inventory Management System is proposed for the Business Affairs and Resource Generating Office (BARGO) of Southern Leyte State University–Hinunangan Campus. The proposed system is intended to serve as a standalone platform for recording inventory items, monitoring stock levels, managing inventory transactions, and generating inventory reports and summaries. It may also support low-stock notifications, inventory adjustment recording, transaction history monitoring, and activity logging to help maintain accurate and updated inventory records.
+To further improve inventory operations, the proposed system may incorporate QR code and barcode scanning functionalities to support faster inventory identification and transaction processing. For perishable and resource-generating products, the system may also support the recording of expiration dates, item condition, quantity adjustments, and damaged inventory records to assist authorized personnel in monitoring inventory quality and stock status. Additionally, the system may include an AI-assisted or rule-based decision-support feature capable of generating inventory alerts and stock monitoring recommendations based on predefined inventory thresholds and transaction records. Web-based inventory systems have been recognized as effective tools for improving data organization, accessibility, operational efficiency, and inventory-related decision-making processes within organizations (Pedraza et al., 2025; Bautista & Young, 2022). Automated inventory systems also contribute to improved monitoring, record accessibility, and operational efficiency in institutional environments (Gumilao, 2024).
+The proposed system is intended for authorized BARGO personnel only, where both the head and staff can perform administrative functions related to inventory management and transaction monitoring. In this context, the development of a web-based Inventory Management System is proposed to support more organized, reliable, efficient, and technology-driven inventory management practices within the BARGO unit.
+ 
+Purpose and Description of the Project 
+The purpose of this project is to design and develop a web-based Inventory Management System for the Business Affairs and Resource Generating Office (BARGO) of Southern Leyte State University–Hinunangan Campus. The project aims to address the identified challenges in current inventory practices by providing a more systematic and efficient approach to recording, monitoring, and managing inventory-related transactions involving office supplies, materials, equipment, and resource-generating products handled by the office (Odasco & Saong, 2023).
+Specifically, the proposed system seeks to improve the efficiency, accessibility, and accuracy of inventory management by reducing reliance on manual procedures and paper-based records. The system is intended to assist authorized BARGO personnel in monitoring stock levels, tracking inventory movement, recording inventory adjustments, monitoring payment status and due dates, and generating inventory reports and summaries in a more organized and reliable manner (Ayochok & Perez, 2024). It may also support low-stock notifications, inventory alerts, activity logs, and transaction history monitoring to help users identify inventory concerns and monitor inventory activities more effectively.
+The proposed system functions as a standalone web-based platform focused on inventory tracking and inventory-related transaction management. It allows users to encode, update, monitor, and reconcile inventory records involving office supplies and resource-generating products such as agricultural goods, rice, vegetables, fruits, organic fertilizer, livestock-related inventory, merchandise, and other products managed by the office. The system also supports the recording of item condition, quantity adjustments, issuance history, damaged or expired inventory, and transaction history to promote proper documentation and inventory monitoring (Pedraza et al., 2025).
+Additionally, the proposed system may include QR code and barcode scanning functionalities to improve inventory identification, stock retrieval, and transaction processing efficiency. The system may also incorporate an AI-assisted or rule-based decision-support feature capable of generating low-stock notifications and inventory monitoring recommendations based on predefined inventory thresholds and transaction records. Inventory quantities may automatically update upon confirmed payment, approved issuance, completed inventory transactions, or confirmed release of items to help maintain accurate stock records.
+Furthermore, the system provides reporting features that support the generation of inventory summaries, stock monitoring reports, transaction histories, and other inventory-related records to assist inventory monitoring and inventory-related decision-making within the office. These reports may help authorized personnel identify low-stock items, monitor frequently issued products, review inventory movement, and support replenishment planning. While the system records payment status, due dates, and transaction information for monitoring purposes, it is limited to inventory management and does not include full financial accounting, bookkeeping, payroll processing, procurement systems, or delivery management functions. The system does not generate official accounting records such as financial statements, ledgers, or journal entries. Overall, the proposed system is developed to improve data organization, reduce manual errors, strengthen inventory monitoring practices, and enhance operational efficiency within BARGO, thereby supporting improved inventory management within the office (Odasco & Saong, 2023).
+
+Objectives of the Project 
+To develop a web-based inventory management system for the Business Affairs and Resource Generating Office of Southern Leyte State University – Hinunangan Campus.
+Specific Objectives:
+To design and develop a web-based inventory management system that allows the encoding, updating, monitoring, reconciliation, and management of inventory items such as office supplies, materials, equipment, and resource-generating products including agricultural goods and livestock-related inventory. 
+To develop a system that enables accurate tracking of stock levels, inventory movement, issuance transactions, inventory adjustments, transaction history, and inventory-related activities within BARGO. 
+To implement inventory monitoring and decision-support features such as low-stock notifications, inventory alerts, activity logging, QR code and barcode scanning, and automated stock updating for efficient inventory identification and transaction processing. 
+To implement a system that supports the generation of inventory reports, transaction summaries, stock monitoring reports, and user access management for improved documentation, monitoring, and inventory-related decision-making within BARGO.
+ 
+Scope and Limitations of the Project 
+This study focuses on the design and development of a web-based Inventory Management System for the Business Affairs and Resource Generating Office (BARGO) of Southern Leyte State University–Hinunangan Campus. The system is intended to support the recording, monitoring, and management of inventory items such as office supplies, materials, equipment, and resource-generating products including agricultural goods and livestock-related inventory. It includes features for tracking stock levels, inventory movement, issuance transactions, inventory adjustments, activity logs, transaction histories, and inventory reports and summaries. The proposed system may also support QR code and barcode scanning functionalities, low-stock notifications, inventory alerts, AI-assisted or rule-based inventory monitoring recommendations, and the recording of expiration dates, damaged inventory, item condition, and quantity adjustments for perishable products. Inventory quantities may automatically update upon approved issuance or completed inventory transactions. The system is designed exclusively for authorized BARGO personnel, specifically the admin and staff, who are granted administrative access to manage inventory data and inventory-related transactions.
+The system is limited to inventory management and inventory-related transaction monitoring only. While it records payment status, due dates, and transaction information for monitoring purposes, it does not include full financial accounting, bookkeeping, payroll processing, procurement systems, or delivery management functions, and it does not generate official accounting records such as financial statements, ledgers, or journal entries. The proposed system is intended to operate within the available institutional hosting or network environment of the university; therefore, accessibility and performance may depend on local network or internet availability depending on the selected deployment setup. During network interruptions or downtime, inventory transactions may be temporarily documented manually and encoded into the system once connectivity is restored. Additionally, issues such as hardware failures, system maintenance, limited time availability of the researchers, financial constraints, and difficulties in coordinating with end users for data gathering and system validation are beyond the scope of the study and may affect the extent of testing and implementation of some system features.
+
+ 
+ 
+ 
+ 
+CHAPTER II – REVIEW OF RELATED LITERATURE  
+Related Literature / Theoretical Background 
+This study is grounded in the principles of Management Information Systems (MIS) and supported by the Technology Acceptance Model (TAM) as its primary theoretical framework. These foundations provide both the conceptual and theoretical basis for the development and implementation of the proposed web-based inventory management system. 
+Management Information Systems (MIS) is a field of study that focuses on integrating information technology, data, and organizational processes to support effective decision-making and operational efficiency. As discussed by Davis (1974), MIS emphasizes transforming raw data into meaningful information for planning, control, and management within organizations. In the context of this study, MIS serves as the conceptual foundation that guides the collection, processing, storage, and presentation of inventory data such as stock levels, transactions, and reports—in a structured, centralized manner. 
+Recent studies highlight the continued relevance of MIS in modern system development. Salvador et al. (2024) emphasized that web-based information systems grounded in MIS principles enable centralized data storage, real-time monitoring, and improved coordination across organizational units. Similarly, Dela Rosa (2022) found that digital information systems significantly enhance data accuracy, accessibility, and efficiency compared to traditional manual processes. These findings support the applicability of MIS principles to address the challenges of inventory management in institutional environments. 
+However, while MIS provides a strong foundation for data management and system functionality, it does not fully explain how users accept and interact with the system. To address this limitation, the study adopts the Technology Acceptance Model (TAM) developed by Davis (1989) as its primary theoretical framework. TAM explains user acceptance of information systems in terms of two key factors: perceived usefulness and perceived ease of use. These factors influence users’ attitudes toward the system and their intention to use it. 
+Recent literature confirms the continued relevance of TAM in evaluating system adoption. Decena (2025) found that perceived usefulness and ease of use significantly affect user acceptance of web-based inventory systems, particularly among organizational staff. This highlights the importance of designing systems that are not only functional but also user-friendly and intuitive to ensure successful implementation. 
+The integration of MIS principles and TAM provides a comprehensive foundation for the study. MIS ensures that the system effectively manages and processes data to support organizational operations and decision-making. In contrast, TAM ensures that the system is designed to promote user acceptance and usability. Together, these frameworks support the development of an efficient, reliable, and user-centered system. 
+ 
+Related Studies 
+Several studies have explored the development and implementation of web-based inventory management systems, highlighting their impact on efficiency, accuracy, and decision-making across different sectors. 
+Just like the study by Suya et al. (2026), their research focused on developing a smart inventory management system for small retail businesses. The system integrates descriptive analytics and rule-based algorithms using the System Development Life Cycle (SDLC). The findings revealed significant improvements in inventory accuracy, operational efficiency, and responsiveness. This supports the concept that Management Information Systems (MIS) improve data processing and operational performance. Despite its effectiveness, the system is designed for retail environments and may not fully meet the needs of institutional offices with different workflows and resource management requirements. 
+Additionally, Saleh et al. (2025) developed a web-based inventory management system for a small food enterprise using the Waterfall model. The system automates inventory transactions, enables real-time monitoring, and provides integrated data access for both staff and management. The study showed improvements in data accuracy and administrative efficiency, aligning with MIS principles of centralized data management. However, while the system is effective in a business setting, it does not fully account for institutional processes and administrative structures within academic offices. 
+Furthermore, Decena Jr. (2025) examined the adoption of a web-based inventory system using the Technology Acceptance Model (TAM). The study found that perceived usefulness and ease of use significantly influence user acceptance, confirming that system usability is critical for successful implementation. This supports the relevance of TAM in ensuring that users effectively adopt the system. However, the study primarily focuses on user acceptance rather than on system design and development, limiting its applicability for building a complete inventory management solution. 
+Similarly, Apiag et al. (2022) evaluated the effectiveness of an inventory management system in a retail environment. The findings indicated that system implementation alone does not guarantee improved performance without proper monitoring and management practices. The study emphasized the importance of structured operational strategies such as regular inventory checks and supervision. While this supports the role of MIS in improving organizational processes, the study does not focus on system development or user-centered design. 
+Overall, these studies demonstrate that web-based inventory management systems significantly improve efficiency, accuracy, and data accessibility. However, most existing studies focus on business or retail environments, or they emphasize specific aspects such as system development or user acceptance. This creates a gap in integrating both system functionality and user usability within an institutional context. Therefore, the proposed system addresses this gap by using MIS as the primary foundation for data management and decision-making, supported by TAM to ensure usability and user acceptance, resulting in a comprehensive, user-centered inventory management system for the Business Affairs and Resource Generating Office of SLSU–Hinunangan Campus. 
+
+  
+CHAPTER III – TECHNICAL BACKGROUND 
+Technicality of the Project 
+The proposed project, entitled “Design and Development of a Web-Based Inventory Management System for the Business Affairs and Resource Generating Office of SLSU–Hinunangan Campus,” will be implemented as a web-based information system designed to improve the efficiency, reliability, and organization of inventory-related processes within the office. The system will adopt a client–server architecture, a widely used framework in web-based applications in which users access the system through a web browser. In contrast, a centralized server processes requests, executes application logic, and manages data storage operations (Shelly & Rosenblatt, 2012). This architecture enables multiple authorized users to access the system simultaneously in a centralized and controlled environment, thereby promoting accessibility, consistency, and efficient data management. 
+The proposed system will function by providing an organized and user-friendly interface through which authorized personnel can encode, update, and manage inventory records electronically. User-entered inventory data will be processed by the application layer and stored in a centralized relational database. According to Connolly and Begg (2015), relational database systems are essential for structured data storage and retrieval, ensuring data integrity, consistency, and efficient management of organizational records. Within the proposed system, inventory items will be categorized and organized according to relevant classifications, including item name, category, quantity, stock status, supplier, department assignment, and acquisition date, to facilitate systematic inventory tracking and monitoring. 
+Furthermore, the system will support essential inventory management functions including stock level monitoring, quantity adjustment, inventory searching, internal request form submission, approval workflow processing, automated generation of printable release and credit transaction forms, payment classification for cash and credit transactions, duedate tracking and profile documentation for credit-based transactions, item updating, and automated generation of inventory reports. These functionalities are consistent with the capabilities of modern web-based inventory systems, which improve data accessibility, reduce manual errors, and streamline inventory operations (Bautista & Dela Cruz, 2022). Real-time monitoring features will enable administrators to accurately track inventory availability and respond promptly to stock shortages or replenishment requests. 
+To ensure system security and proper data governance, authentication and rolebased access control mechanisms will be integrated into the system. These mechanisms will restrict access to system functions based on user authorization levels, thereby protecting sensitive inventory records from unauthorized access or modification. The system's usability will also be considered during development to ensure users can effectively adopt and use the platform. Davis (1989) emphasized through the Technology Acceptance Model that perceived ease of use and perceived usefulness significantly influence user acceptance of information systems, highlighting the importance of developing systems that are intuitive and user-friendly. 
+From a technical feasibility perspective, the proposed system is achievable within the scope of a Bachelor of Science in Information Technology capstone project as it will utilize widely accepted web development technologies, software engineering methodologies, and database management systems appropriate for academic system development. Pressman and Maxim (2020) stated that modern software development tools and frameworks enable the practical implementation of robust web-based systems within structured project timelines. Given the accessibility of these technologies and the manageable scope of the proposed functionalities, the development of the system is considered technically viable and aligned with established information technology standards and competencies. 
+Overall, the proposed web-based inventory management system is technically feasible and appropriate for addressing the inventory management needs of the Business Affairs and Resource Generating Office. Through the integration of centralized data management, real-time inventory monitoring, secure access control, and web-based accessibility, the system is expected to provide a more efficient, organized, and reliable approach to inventory management compared to existing manual or semi-manual 
+processes. 
+Details of the Technologies to be Used 
+The proposed Hybrid Web and Desktop Inventory Management System for the Business Affairs and Resource Generating Office of SLSU–Hinunangan Campus will be developed using modern web and cloud-based technologies to ensure scalability, maintainability, security, accessibility, and efficient deployment for actual institutional operations. The selected technology stack is appropriate for developing a production-ready inventory management system that supports both web and desktop environments while aligning with current industry standards in information system development.
+For front-end development, HTML5, CSS3, JavaScript (ES6), Tailwind CSS, and the Laravel Blade Templating Engine will be utilized to design and implement the graphical user interface of the system. HTML5 will serve as the primary markup language for structuring web content, including dashboards, inventory forms, transaction records, and reporting interfaces. CSS3 will be used to define the visual styling, responsive layouts, and overall user interface consistency of the application. JavaScript will provide client-side scripting functionalities that support interactive system behavior, including dynamic form validation, real-time search filtering, responsive navigation, and asynchronous interface updates. Additionally, Tailwind CSS will be employed as the primary front-end styling framework to accelerate interface development through utility-based styling, responsive design support, and reusable UI components, thereby improving development efficiency and visual consistency across devices. Laravel’s Blade templating engine will further support modular and reusable interface rendering, which enhances maintainability and simplifies front-end development processes.
+For back-end development, Laravel, a PHP-based web application framework, will serve as the primary framework for implementing server-side functionalities and business logic. Laravel provides a robust and scalable development environment capable of handling essential system operations such as user authentication, role-based access control, inventory transaction management, stock monitoring, report generation, and secure database communication. The framework follows the Model–View–Controller (MVC) architectural pattern, which promotes organized code structure, separation of concerns, maintainability, and scalability within software applications. Laravel also offers built-in security mechanisms, including CSRF protection, password hashing, authentication scaffolding, and request validation, making it highly suitable for secure enterprise-level inventory systems.
+To support desktop accessibility, Electron.js will be integrated into the system to convert the web-based application into a hybrid desktop application compatible with Windows-based office environments. Electron.js enables the deployment of desktop applications using web technologies such as HTML, CSS, and JavaScript while maintaining synchronization with the cloud-hosted web application. This approach allows office personnel to access the system both through web browsers and as a standalone desktop application without requiring separate codebases for each platform.
+The proposed system will use MySQL as its relational database management system for storing and managing structured inventory-related information. The database will maintain records including inventory items, stock quantities, supplier information, transaction histories, user accounts, audit logs, and generated reports. MySQL supports efficient relational data processing and ensures data integrity, consistency, and optimized data retrieval through structured query mechanisms. To ensure cloud accessibility and centralized data management, the database will be hosted using Aiven Cloud Database Services, which provides managed cloud-based MySQL hosting with automated backups, scalability, and secure remote access capabilities suitable for institutional deployment.
+For cloud deployment and hosting, the system will utilize Render as the cloud application hosting platform. Render provides reliable cloud infrastructure for deploying Laravel-based web applications, enabling online accessibility, automatic deployment from GitHub repositories, SSL security integration, and continuous application availability. This cloud-based deployment architecture ensures that authorized users can access the inventory system remotely while maintaining centralized data synchronization between web and desktop platforms.
+To support local development and dependency management, Laragon or XAMPP and Composer will be utilized during the development process. Laragon or XAMPP will provide the local server environment necessary for running Apache, PHP, and MySQL services during development and testing, while Composer will manage Laravel packages and project dependencies throughout the software development lifecycle. GitHub will also be used for version control, collaboration, source code management, and deployment integration.
+Overall, the selected technologies—Laravel, Blade, HTML5, CSS3, JavaScript, Tailwind CSS, Electron.js, MySQL, Aiven Cloud Database, Render, Composer, and GitHub—are technically appropriate for developing the proposed hybrid inventory management system. These technologies provide reliable support for cloud-based deployment, desktop integration, scalability, security, and maintainability, making them suitable for real-world institutional implementation beyond academic presentation purposes.
+Proposed Project Plan (Added Gantt Chart) 
+The proposed project will be implemented through a systematic, structured sequence of development phases to ensure the system's organized and efficient completion. The development process will follow a logical progression from project planning through system deployment, enabling the proponents to methodically design, develop, test, and refine the Web-Based Inventory Management System for the Business Affairs and Resource Generating Office of SLSU–Hinunangan Campus throughout each stage of development. 
+Activities 
+Jan 
+Feb 
+Ma
+r 
+Apr 
+Ma
+y 
+Jun 
+Jul 
+Au
+g 
+Sep 
+Oct 
+No
+v 
+Dec 
+Project Planning 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Requirements Analysis 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+System Design 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+System 
+Development 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Testing & 
+Debugging 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+System 
+Deployment 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Documentation & Finalization 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Table 3.1 Gantt Chart of Activities (Jan-Dec 2026) 
+As shown in Table 3.1, the Gantt chart illustrates the projected schedule for the development of the proposed system throughout 2026. The project will commence with the Project Planning phase from January to February, during which the proponents will define the project objectives, scope, timeline, and preliminary system requirements. 
+The Requirements Analysis phase will be conducted from February to April, focusing on gathering, analyzing, and documenting the functional and non-functional requirements of the proposed system, as well as assessing the current inventory management practices of the Business Affairs and Resource Generating Office. Following this, the System Design phase will take place from March to May, wherein the proponents will develop the system architecture, database structure, process flow diagrams, and user interface designs. 
+The System Development phase is scheduled from June to September, during which the actual coding, implementation, and integration of system functionalities—such as inventory recording, stock monitoring, request and approval processing, printable form generation, payment classification tracking, report generation, and user access management—will be carried out. Concurrently, Testing and Debugging will be performed from August to September to evaluate system performance, identify functional issues, and ensure that all components operate in accordance with the specified requirements. 
+The System Deployment phase is planned for September to October, during which the completed system will be installed, configured, and prepared for implementation within the Business Affairs and Resource Generating Office. Finally, the Documentation and Finalization phase will be conducted from September to December, covering the completion of technical documentation, refinement of the developed system, manuscript preparation, and readiness for final presentation and project defense. 
+ 
+ 
+Architectural Design of the Proposed System 
+The proposed system will adopt a client–server architectural model, wherein interactions among users, application processes, and the database are managed through a structured web-based environment. This architectural framework defines how inventory data is processed, transmitted, and stored within the Web-Based Inventory Management 
+System for the Business Affairs and Resource Generating Office of SLSU–Hinunangan Campus. 
+The system's architectural design comprises four primary components: users, user interface, application server, and database. These components function collectively to facilitate secure, efficient, and organized inventory management operations within the target office. 
+The system will be accessed exclusively by authorized personnel of the Business Affairs and Resource Generating Office, specifically the Requesters-who initiate inventory request forms and stock-out transactions-and the BARGO Administrators-who manage inventory records, monitor stock levels, process approvals, and generate reports, all according to their defined access privileges. Clarifying these roles helps stakeholders understand user responsibilities and system security measures. 
+The user interface will serve as the system's front-end component, providing an interactive platform for users to input data and receive system outputs. It will support intuitive navigation and efficient interaction with the system’s various functionalities through organized forms, dashboards, tables, and reporting interfaces. 
+The application server will manage the system's core business logic and processing functions. It will handle operations such as user authentication, inventory transaction processing, stock monitoring, report generation, user input validation, and enforcement of role-based access controls. Additionally, the application server will facilitate communication between the user interface and the database to ensure proper execution of system requests. 
+The database will function as the centralized repository of all system data, where inventory records, user credentials, stock quantities, supplier information, transaction logs, and generated reports will be securely stored and maintained for efficient retrieval and management. 
+Data from the user interface will flow to the application server for validation and processing, after which the processed data will be transmitted to the database for storage. When requested by the user, the system retrieves relevant data from the database via the application server and displays the processed output in the user interface. 
+Overall, the proposed system's architectural design establishes a centralized, structured framework that supports secure, efficient inventory management, data handling, controlled user access, and accurate information processing within the Business Affairs 
+and Resource Generating Office.   
+                    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 3.1 – Architectural Design of the Proposed System 
+ 
+Process Flow of the Proposed Project  
+ Figure 3.2 illustrates the operational process flow of the proposed Web-Based 
+Inventory Management System for the Business Affairs and Resource Generating Office (BARGO) of Southern Leyte State University–Hinunangan Campus. The process begins when an authorized user accesses the web-based Inventory Management System through the login interface. The user enters their username and password, which are validated against the registered user records stored securely in the database. The system employs role-based access controls to restrict functionalities based on user privileges, ensuring data security and user privacy throughout the process. If credentials are invalid, an error message is displayed, prompting re-entry, thus maintaining system integrity and confidentiality. 
+After a successful login, the user may select among the system's core operational modules, namely Inventory Management, Stock-in Process, Stock-out/Request Process, Reports, and Logout. 
+Under the Inventory Management module, the administrator may add, edit, or view inventory item details. The system validates the entered item information to ensure completeness and correctness before saving the data. If the entered information fails validation, the system displays an error message and requests correction. If valid, the system saves or updates the inventory records in the inventory database and displays the updated inventory list. 
+Under the Stock-in Process module, the user records delivered inventory items by entering stock-in details, including item quantity and supplier information. The system validates the stock-in data to ensure data accuracy and completeness. If invalid data is detected, the system displays an error message. If valid, the system updates the stock quantity of the corresponding inventory item, records the stock-in transaction in the database, and displays a success notification to the user. 
+Under the Stock-out / Request Process module, the requester submits an inventory request through the system. The system checks current stock availability for the requested item and quantity. If sufficient stock is unavailable, the system notifies the user and terminates the transaction. If stock is available, the request is forwarded for approval. The administrator then reviews the submitted request and determines whether to approve or reject it. If the request is rejected, the system updates the request status to rejected and notifies the requester. If approved, the system generates the corresponding release slip, releases the requested item, deducts the issued quantity from the inventory stock, records the stock-out transaction in the database, and updates the inventory records in real time. 
+In the Reports module, the user selects the desired report type and applies optional filters, such as a date range and item category. The system processes the selected parameters, generates the requested inventory report, and displays the output for viewing, printing, or exporting. 
+Under the Logout module, the system terminates the user session and securely logs the user out of the application. 
+All completed transactions including inventory updates, stock-in records, stockout transactions, approvals, and report requests—are stored and synchronized within the centralized Inventory Management Database. The database serves as the primary repository for all inventory-related records and supports the generation of updated dashboard outputs and notifications as needed. 
+Overall, the process flow demonstrates the systematic and integrated workflow of the proposed system, ensuring secure authentication, accurate inventory validation, real-time stock monitoring, structured approval processing, automated report generation, and centralized data management. Through this workflow, the proposed system enhances the efficiency, accuracy, reliability, and traceability of inventory operations within the BARGO office. 
+ 
+ 
+ 
+ 
+ 
+
+Figure 3.2 – Process Flow of the Proposed System 
+ 
+ 
+ 
+REFERENCES 
+Atilano-Tang, L. A., & Damsani, K. (2023). Quality of inventory management system: 
+Case study of BARMM–Ministry of Public Works – Basilan District Engineering Office. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4535950 
+Ayochok, J., & Perez, C. (2024). Enhancement of the inventory management system of 
+state universities and colleges in Mountain Province. 
+https://journal.formosapublisher.org/index.php/eajmr/article/view/11278 
+Bautista, J. V., & Young, M. N. (2022). Effective inventory management system in efficient 
+supply and distribution management in the Philippines. 
+https://www.researchgate.net/publication/359992876_Effective_Inventory_Mana gement_System_in_Efficient_Supply_and_Distribution_Management 
+Gumilao, J. (2024). Automated inventory management system for Department of Education 
+Regional Office IX. 
+https://www.researchgate.net/publication/385269885_AUTOMATED_INVENTO
+RY_MANAGEMENT_SYSTEM_FOR_DEPARTMENT_OF_EDUCATION_R
+EGIONAL_OFFICE_IX 
+Odasco, B., & Saong, M. (2023). Analysis of the inventory management system towards 
+enhanced university service delivery. 
+https://www.researchgate.net/publication/373766654_Analysis_of_the_Inventory
+_Management_System_Towards_Enhanced_University_Service_Delivery 
+Pedraza, J. S., et al. (2025). Online inventory management system: A web-based inventory 
+management solution for business operations. 
+https://www.researchgate.net/publication/391744160_Online_Inventory_Manage ment_System_A_Web-
+Based_Inventory_Management_Solution_for_Business_Operations 
+Southern Leyte State University. (n.d.). Hinunangan campus. 
+https://southernleytestateu.edu.ph/index.php/en/hinunangan-campus 
+Dela Rosa, A. P. M. (2022). Web-based management information system of cases filed with the National Labor Relations Commission. International Journal of Computing Sciences Research, 6. https://doi.org/10.48550/arXiv.2211.14452 
+ 
+Grepon, B. G. (2020). Designing and implementing e-justice systems: An information systems approach to regional trial court case docket management in Northern 
+Mindanao, Philippines. International Journal of Multidisciplinary Academic Research, 8(44–54). https://doi.org/10.48550/arXiv.2103.06412 
+Salvador, M. A., Botangen, K. A., Rabang, M. C., Salinas, I. C., Naagas, M., & Balagot, A. (2024). Development of a web-based research consortium database management system: Advancing data-driven and knowledge-based project management. https://doi.org/10.48550/arXiv.2411.00483 
+Bautista, R. G., Jr., & Dela Cruz, M. A. (2022). Inventory management and monitoring system using progressive web application frameworks. President Ramon Magsaysay University – Iba Campus. https://apjaet.com/wp-
+content/uploads/2022/08/Inventory-Management-and-Monitoring-System-usingProgressive-Web-Application-Frameworks.pdf 
+ 
+Zaragosa, A. R. A., Fernandez, S. M. B., & Pagayonan, S. M. S. (2022). Web-based computer laboratory inventory management system. International Journal of 
+Engineering Inventions, 11(3), 396–401. 
+https://www.ijeijournal.com/papers/Vol11-Issue3/1103396401.pdf 
+Suya, J., Rodillas, G. C., Tubog, X. J., & Doctor, R. C. (2026). Sort out: A smart inventory management system using descriptive analytics and rule-based algorithm for mini grocery stores. International Journal of Research and Innovation in Applied 
+Science, 11(2), 136–148. https://doi.org/10.51584/IJRIAS.2026.110200012 
+Saleh, A., Herdianzah, Y., Dini, A., Fole, A., & Riana, R. I. (2025). Redesigning a webbased inventory management information system using the Waterfall method: A case study at Browcyl Brownies Warehouse. Journal of Industrial Engineering and 
+Management, 10(2), 1–12. 
+https://jurnal.fti.umi.ac.id/index.php/JIEM/article/view/2195 
+Decena Jr., R. (2025). Assessing the adoption and usefulness of a web-based inventory system among warehouse personnel: Basis for recommending a training program. 
+University of Perpetual Help Dalta Graduate School, Philippines. 
+https://doi.org/10.54476/ioer-imrj/997498 
+Apiag, J., Caballero, J., Callueng, M. E., Dela Cruz, L. A. B., & Ganagan, G. (2022). An assessment on the effectiveness of the inventory management system of Red Camia 
+Supermarket in Apalit Pampanga: Implication for profitability. Ascending Asia 
+Singapore – Bestlink College of the Philippines Journal of Multidisciplinary 
+Research, 4(1). 
+https://ojs.aaresearchindex.com/index.php/aasgbcpjmra/article/view/13706 
+Shelly, G. B., & Rosenblatt, H. J. (2012). Systems Analysis and Design (9th ed.). Cengage 
+Learning. https://books.google.com/books/about/Systems_Analysis_and_Design.html?id=X iJTWMRPZi4C 
+Connolly, T., & Begg, C. (2015). Database Systems: A Practical Approach to Design, 
+Implementation, and Management (6th ed.). Pearson.   
+ https://www.pearson.com/en-us/subject-catalog/p/database-systems-a-practicalapproach-to-design-implementation-andmanagement/P200000003525/9780137517053 
+Pressman, R. S., & Maxim, B. R. (2020). Software Engineering: A Practitioner’s Approach 
+(9th ed.). McGraw-Hill Education.   https://www.mheducation.com/highered/product/software-engineering-apractitioners-approach-pressman.html 
+Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. MIS Quarterly, 13(3), 319–340. 
+  https://doi.org/10.2307/249008 
+Bautista, R. G., Jr., & Dela Cruz, M. A. (2022). Inventory Management and Monitoring 
+System Using Progressive Web Application Frameworks. 
+ https://apjaet.com/wp-content/uploads/2022/08/Inventory-Management-andMonitoring-System-using-Progressive-Web-Application-Frameworks.pdf 
+ 
+Otto, M., & Thornton, J. (2011). Bootstrap: The most popular HTML, CSS, and JavaScript 
+framework for developing responsive, mobile-first websites. 
+https://getbootstrap.com/ 
+Stauffer, M. (2019). Laravel: Up and Running: A Framework for Building Modern PHP Apps (2nd ed.). O’Reilly Media. https://www.oreilly.com/library/view/laravelup/9781492041207/ 
+ 
