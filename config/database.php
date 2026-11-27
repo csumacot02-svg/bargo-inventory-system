@@ -60,8 +60,13 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                // Aiven / managed MySQL: download CA to storage/certs/aiven-ca.pem when available.
+                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA') ?: null,
+                // Set MYSQL_ATTR_SSL_VERIFY_SERVER_CERT=false for local Aiven setup without CA file.
+                Mysql::ATTR_SSL_VERIFY_SERVER_CERT => env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT') === null
+                    ? null
+                    : filter_var(env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT'), FILTER_VALIDATE_BOOLEAN),
+            ], static fn ($value) => ! is_null($value)) : [],
         ],
 
         'mariadb' => [
@@ -80,8 +85,11 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA') ?: null,
+                Mysql::ATTR_SSL_VERIFY_SERVER_CERT => env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT') === null
+                    ? null
+                    : filter_var(env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT'), FILTER_VALIDATE_BOOLEAN),
+            ], static fn ($value) => ! is_null($value)) : [],
         ],
 
         'pgsql' => [
