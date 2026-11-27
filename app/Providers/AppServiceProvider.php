@@ -27,8 +27,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(Registered::class, SendEmailVerificationNotification::class);
 
-        if ($this->app->environment('production')) {
+        // Render and other HTTPS hosts: never emit http:// asset URLs (mixed content breaks CSS).
+        $appUrl = (string) config('app.url');
+        if ($this->app->environment('production') || str_starts_with($appUrl, 'https://')) {
             URL::forceScheme('https');
+        }
+        if ($appUrl !== '') {
+            URL::forceRootUrl(rtrim($appUrl, '/'));
         }
 
         RateLimiter::for('login', function (Request $request) {
