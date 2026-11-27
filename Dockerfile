@@ -17,8 +17,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     libicu-dev \
     libonig-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install -j"$(nproc)" pdo_mysql mbstring intl zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" pdo_mysql mbstring intl zip gd \
     && rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite headers
