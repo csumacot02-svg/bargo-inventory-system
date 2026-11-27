@@ -27,12 +27,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(Registered::class, SendEmailVerificationNotification::class);
 
-        // Render and other HTTPS hosts: never emit http:// asset URLs (mixed content breaks CSS).
+        // Render terminates TLS at the proxy. Never emit http:// or localhost asset URLs.
         $appUrl = (string) config('app.url');
-        if ($this->app->environment('production') || str_starts_with($appUrl, 'https://')) {
+        $isLocalhostUrl = (bool) preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?#i', $appUrl);
+        $onRender = filter_var(env('RENDER', false), FILTER_VALIDATE_BOOLEAN);
+
+        if ($this->app->environment('production') || $onRender || str_starts_with($appUrl, 'https://')) {
             URL::forceScheme('https');
         }
-        if ($appUrl !== '') {
+
+        // Do not pin asset URLs to a local APP_URL — that breaks hosted deploys.
+        if ($appUrl !== '' && ! $isLocalhostUrl) {
             URL::forceRootUrl(rtrim($appUrl, '/'));
         }
 

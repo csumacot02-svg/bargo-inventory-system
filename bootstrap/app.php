@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Render / Cloudflare sit in front of Apache; honor X-Forwarded-* so HTTPS URLs are generated.
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureUserHasRole::class,
             'account.active' => \App\Http\Middleware\EnsureAccountIsActive::class,
