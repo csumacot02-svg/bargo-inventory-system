@@ -55,7 +55,16 @@ class EmailVerificationController extends Controller
             return $this->afterVerifiedRedirect($request);
         }
 
-        $request->user()->sendEmailVerificationNotification();
+        try {
+            $request->user()->sendEmailVerificationNotification();
+        } catch (\Throwable $e) {
+            report($e);
+
+            return back()->withErrors([
+                'otp' => 'Could not send the verification email: '.$e->getMessage()
+                    .' — Note: Render Free blocks Gmail SMTP ports. Use MAIL_MAILER=resend with a RESEND_API_KEY (HTTPS), or upgrade Render to a paid plan for SMTP.',
+            ]);
+        }
 
         return back()->with('success', 'A new 6-digit code has been sent to your email.');
     }
